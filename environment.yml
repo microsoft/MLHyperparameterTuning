@@ -1,0 +1,18 @@
+name: MLBHT
+channels:
+  - conda-forge
+dependencies:
+  - python=3.5
+  - nb_conda==2.2.0
+  - ipywidgets==7.3.0
+  - tornado==4.5.3
+  - pandas==0.23.3
+  - pip:
+    - aiohttp==3.3.2
+    - toolz==0.9.0
+    - tqdm==4.23.4
+    - azure-cli==2.0.41
+    - scikit-learn==0.19.1
+    - lightgbm==2.1.2
+    - papermill==0.14.1
+    - python-dotenv==0.9.1
