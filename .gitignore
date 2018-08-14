@@ -333,10 +333,6 @@ ASALocalRun/
 .dir-locals.el
 
 # Products
-balanced_pairs_test.tsv
-balanced_pairs_train.tsv
-dupes_test.tsv
-dupes_train.tsv
-questions.tsv
-inst.txt
-labels.txt
+*.tsv
+*.txt
+*.pkl
