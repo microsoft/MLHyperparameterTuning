@@ -328,3 +328,15 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# Emacs
+.dir-locals.el
+
+# Products
+balanced_pairs_test.tsv
+balanced_pairs_train.tsv
+dupes_test.tsv
+dupes_train.tsv
+questions.tsv
+inst.txt
+labels.txt
