@@ -4,7 +4,6 @@ channels:
 dependencies:
   - python=3.5
   - nb_conda==2.2.1
-  - pywin32==223
   - ipywidgets=7.4.0
   - tornado==4.5.3
   - pandas==0.23.4
