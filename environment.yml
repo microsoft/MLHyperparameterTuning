@@ -10,6 +10,7 @@ dependencies:
   - pandas==0.23.4
   - pip:
     - azure-cli==2.0.44
+    - azure-mgmt-scheduler==2.0.0
     - scikit-learn==0.19.2
     - lightgbm==2.1.2
     - papermill==0.14.2
