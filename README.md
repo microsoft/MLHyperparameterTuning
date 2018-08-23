@@ -1,3 +1,19 @@
+# Setup
+
+To set up your environment to run these notebooks, please follow these
+steps.
+
+1. Create the Python MLBatchAIHyperparameterTuning virtual environment using the environment.yml:
+   ```
+   conda env create -f environment.yml
+   ```
+2. Activate the virtual environment:
+   ```
+   source activate MLBatchAIHyperparameterTuning
+   ```
+3. Start the Jupyter notebook server in the virtual environment:
+   ```
+   jupyter notebook
 
 # Contributing
 
