@@ -11,7 +11,6 @@ dependencies:
   - pip:
     - azure==4.0.0
     - azure-cli==2.0.44
-    - azure-mgmt-scheduler==2.0.0
     - lightgbm==2.1.2
     - papermill==0.14.2
     - python-dotenv==0.9.1
