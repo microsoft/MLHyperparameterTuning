@@ -7,11 +7,11 @@ dependencies:
   - ipywidgets=7.4.0
   - tornado==4.5.3
   - pandas==0.23.4
+  - scikit-learn==0.19.1
   - pip:
     - azure==4.0.0
     - azure-cli==2.0.44
     - azure-mgmt-scheduler==2.0.0
-    - scikit-learn==0.19.2
     - lightgbm==2.1.2
     - papermill==0.14.2
     - python-dotenv==0.9.1

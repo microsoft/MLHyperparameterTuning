@@ -1,3 +1,7 @@
+# Requirements
+
+This project is meant to run on Linux. 
+
 # Setup
 
 To set up your environment to run these notebooks, please follow these
@@ -14,6 +18,7 @@ steps.
 3. Start the Jupyter notebook server in the virtual environment:
    ```
    jupyter notebook
+   ```
 
 # Contributing
 
