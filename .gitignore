@@ -336,7 +336,9 @@ ASALocalRun/
 .dir-locals.el
 
 # Products
+.env
 *.tsv
 *.txt
 *.pkl
+configuration.json
 TrainTestClassifier.py
