@@ -13,4 +13,4 @@ dependencies:
     - azure-cli==2.0.44
     - lightgbm==2.1.2
     - papermill==0.14.2
-    - python-dotenv==0.9.1
+    - git+https://github.com/theskumar/python-dotenv
