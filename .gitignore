@@ -342,3 +342,4 @@ ASALocalRun/
 *.pkl
 configuration.json
 TrainTestClassifier.py
+TrainTestClassifier.log
