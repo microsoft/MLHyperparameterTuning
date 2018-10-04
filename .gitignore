@@ -338,6 +338,7 @@ ASALocalRun/
 # Products
 .env
 *.tsv
+*.csv
 *.txt
 *.pkl
 configuration.json
