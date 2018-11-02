@@ -37,14 +37,24 @@ class ItemSelector(BaseEstimator, TransformerMixin):
     """
 
     def __init__(self, keys):
+        if type(self.keys) is list:
+            if not all([getattr(key, '__hash__', None) is not None
+                        for key in keys]):
+                raise TypeError('Not all keys are hashable')
+        elif not getattr(keys, '__hash__', None) is not None:
+            raise TypeError('keys is not hashable')
         self.keys = keys
 
     def fit(self, x, *args, **kwargs):
         if type(self.keys) is list:
-            assert all([key in x for key in self.keys]), 'Not all keys in data'
-        else:
-            assert self.keys in x, 'key not in data'
+            if not all([key in x for key in self.keys]):
+                raise KeyError('Not all keys in data')
+        elif self.keys not in x:
+            raise KeyError('key not in data')
         return self
 
     def transform(self, data_dict, *args, **kwargs):
         return data_dict[self.keys]
+
+    def get_feature_names(self):
+        return self.keys
