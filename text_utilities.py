@@ -4,7 +4,6 @@ import math
 import gzip
 import requests
 import json
-import ipywidgets as widgets
 
 
 def read_csv_gz(url, **kwargs):
