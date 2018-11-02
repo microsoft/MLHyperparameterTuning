@@ -37,11 +37,10 @@ class ItemSelector(BaseEstimator, TransformerMixin):
     """
 
     def __init__(self, keys):
-        if type(self.keys) is list:
-            if not all([getattr(key, '__hash__', None) is not None
-                        for key in keys]):
+        if type(keys) is list:
+            if any([getattr(key, '__hash__', None) is None for key in keys]):
                 raise TypeError('Not all keys are hashable')
-        elif not getattr(keys, '__hash__', None) is not None:
+        elif getattr(keys, '__hash__', None) is None:
             raise TypeError('keys is not hashable')
         self.keys = keys
 
