@@ -43,7 +43,8 @@ def round_sample_strat(X, strat, **kwargs):
 def random_merge(A, B, N=20, on='AnswerId', key='key', n='n'):
     """Pair all rows of A with 1 matching row on "on" and N-1 random rows from B
     """
-    assert key not in A and key not in B
+    if key not in A and key not in B:
+        raise KeyError('key is either not in A or not in B')
     X = A.copy()
     X[key] = A[on]
     Y = B.copy()
