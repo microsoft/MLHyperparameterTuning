@@ -8,6 +8,7 @@ This scenario shows how to tune a Frequently Asked Questions (FAQ) matching mode
 ## Design
 ![alt text](Design.png "Design")
 The scenario uses a subset of Stack Overflow question data which includes original questions tagged as JavaScript, their duplicate questions, and their answers. It tunes a Scikit-Learn pipeline to predict the match probability of a duplicate question with each of the original questions. The application flow for this architecture is as follows:
+
 1. 
 
 ## Prerequisites
