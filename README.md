@@ -13,7 +13,7 @@ The scenario uses a subset of Stack Overflow question data which includes origin
 
 ## Prerequisites
 1. Linux(Ubuntu).
-2. [Anaconda Python](https://www.anaconda.com/download)
+2. [Anaconda Python](https://www.anaconda.com/download) installed.
 3. [Docker](https://docs.docker.com/v17.12/install/linux/docker-ee/ubuntu) installed.
 4. [DockerHub](https://hub.docker.com/) account.
 5. [Azure account](https://azure.microsoft.com).
