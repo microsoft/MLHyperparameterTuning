@@ -48,15 +48,20 @@ steps.  They setup the notebooks to use Docker and Azure seamlessly.
    ```
    source activate MLBatchAIHyperparameterTuning
    ```
-7. Login to Azure:
+7. Install and enable Jupyter widgets:
+   ```
+   jupyter nbextension install --py --user azureml.train.widgets
+   jupyter nbextension enable --py --user azureml.train.widgets
+   ```
+8. Login to Azure:
    ```
    az login
    ```
-8. If you have more than one Azure subscription, select it:
+9. If you have more than one Azure subscription, select it:
    ```
    az account set --subscription <Your Azure Subscription>
    ```
-9. Start the Jupyter notebook server in the virtual environment:
+10. Start the Jupyter notebook server in the virtual environment:
    ```
    jupyter notebook
    ```
