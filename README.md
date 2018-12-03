@@ -50,8 +50,8 @@ steps.  They setup the notebooks to use Docker and Azure seamlessly.
    ```
 7. Install and enable Jupyter widgets:
    ```
-   jupyter nbextension install --py --user azureml.train.widgets
-   jupyter nbextension enable --py --user azureml.train.widgets
+   jupyter nbextension install --py --user azureml.widgets
+   jupyter nbextension enable --py --user azureml.widgets
    ```
 8. Login to Azure:
    ```
