@@ -9,7 +9,14 @@ This scenario shows how to tune a Frequently Asked Questions (FAQ) matching mode
 ![alt text](Design.png "Design")
 The scenario uses a subset of Stack Overflow question data which includes original questions tagged as JavaScript, their duplicate questions, and their answers. It tunes a Scikit-Learn pipeline to predict the match probability of a duplicate question with each of the original questions. The application flow for this architecture is as follows:
 
-1. 
+1. Create an Azure ML Service workspace.
+2. Create an Azure ML Compute cluster.
+3. Upload training and test data to Azure Storage.
+4. Configure a HyperDrive random parameter search.
+5. Submit the search.
+6. Monitor until complete.
+7. Retrieve the best set of hyperparameters.
+8. Register the best model.
 
 ## Prerequisites
 1. Linux(Ubuntu).
@@ -48,15 +55,20 @@ steps.  They setup the notebooks to use Docker and Azure seamlessly.
    ```
    source activate MLBatchAIHyperparameterTuning
    ```
-7. Login to Azure:
+7. Install and enable Jupyter widgets:
+   ```
+   jupyter nbextension install --py --user azureml.widgets
+   jupyter nbextension enable --py --user azureml.widgets
+   ```
+8. Login to Azure:
    ```
    az login
    ```
-8. If you have more than one Azure subscription, select it:
+9. If you have more than one Azure subscription, select it:
    ```
    az account set --subscription <Your Azure Subscription>
    ```
-9. Start the Jupyter notebook server in the virtual environment:
+10. Start the Jupyter notebook server in the virtual environment:
    ```
    jupyter notebook
    ```

@@ -345,3 +345,6 @@ configuration.json
 TrainTestClassifier.py
 TrainTestClassifier.log
 Docker/
+aml_config/
+data/
+scripts/
