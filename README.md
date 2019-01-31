@@ -45,15 +45,15 @@ steps.  They setup the notebooks to use Docker and Azure seamlessly.
    ```
 4. Clone, fork, or download the zip file for this repository:
    ```
-   git clone https://github.com/Azure/MLBatchAIHyperparameterTuning.git
+   git clone https://github.com/Azure/MLHyperparameterTuning.git
    ```
-5. Create the Python MLBatchAIHyperparameterTuning virtual environment using the environment.yml:
+5. Create the Python MLHyperparameterTuning virtual environment using the environment.yml:
    ```
    conda env create -f environment.yml
    ```
 6. Activate the virtual environment:
    ```
-   source activate MLBatchAIHyperparameterTuning
+   source activate MLHyperparameterTuning
    ```
 7. Install and enable Jupyter widgets:
    ```
@@ -74,7 +74,7 @@ steps.  They setup the notebooks to use Docker and Azure seamlessly.
    ```
 
 ## Steps
-After following the setup instructions above, run the Jupyter notebooks in order starting with [Data Prep Notebook](https://github.com/Azure/MLBatchAIHyperparameterTuning/blob/master/00_Data_Prep.ipynb).
+After following the setup instructions above, run the Jupyter notebooks in order starting with [Data Prep Notebook](https://github.com/Azure/MLHyperparameterTuning/blob/master/00_Data_Prep.ipynb).
 
 ## Cleaning up
 To remove the conda environment created see [here](https://conda.io/docs/commands/env/conda-env-remove.html). The last Jupyter notebook also gives details on deleting Azure resources associated with this repository.
