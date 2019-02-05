@@ -1,6 +1,6 @@
 ### Author: Mario Bourgoin
 
-# Tuning Python models on a Batch AI cluster
+# Tuning Python models on an AML cluster
 
 ## Overview
 
