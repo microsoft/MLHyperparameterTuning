@@ -37,7 +37,7 @@ To set up your environment to run these notebooks, please follow these steps.  T
 1. Create a _Linux_ _Ubuntu_ DSVM.
 2. Clone, fork, or download the zip file for this repository:
    ```
-   git clone https://github.com/Azure/MLHyperparameterTuning.git
+   git clone https://github.com/Microsoft/MLHyperparameterTuning.git
    ```
 3. Create the Python MLHyperparameterTuning virtual environment using the environment.yml:
    ```
@@ -67,7 +67,7 @@ To set up your environment to run these notebooks, please follow these steps.  T
 
 ## Steps
 
-After following the setup instructions above, run the Jupyter notebooks in order starting with [Data Prep Notebook](https://github.com/Azure/MLHyperparameterTuning/blob/master/00_Data_Prep.ipynb).
+After following the setup instructions above, run the Jupyter notebooks in order starting with [Data Prep Notebook](https://github.com/Microsoft/MLHyperparameterTuning/blob/master/00_Data_Prep.ipynb).
 
 ## Cleaning up
 
