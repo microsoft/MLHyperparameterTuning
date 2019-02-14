@@ -3,7 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - python=3.6
-  - nb_conda_kernels==2.1.0
+  - nb_conda_kernels==2.2.0
   - ipywidgets==7.4.2
   - pandas==0.23.4
   - scikit-learn==0.20.0
