@@ -1,6 +1,6 @@
 ### Author: Mario Bourgoin
 
-# Tuning Python models on an AML cluster
+# Training of Python scikit-learn models on Azure
 
 ## Overview
 
