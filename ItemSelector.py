@@ -1,3 +1,5 @@
+# Copyright (C) Microsoft Corporation.  All rights reserved.
+
 # From: http://scikit-learn.org/0.18/auto_examples/hetero_feature_union.html
 from sklearn.base import BaseEstimator, TransformerMixin
 
