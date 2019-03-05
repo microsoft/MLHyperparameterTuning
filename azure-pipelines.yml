@@ -29,7 +29,7 @@ jobs:
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
-      conda activate MLAKSDeployAML
+      conda activate MLHyperparameterTuning
       az account show
     displayName: 'Subscription Test'
  
