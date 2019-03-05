@@ -1,0 +1,27 @@
+# MLHyperparameterTuning Pipeline 
+
+trigger:
+- master
+
+variables:
+- group: AzureKeyVault
+
+jobs:
+- job: MLHyperparameterTuningJob
+  timeoutInMinutes: 300
+  cancelTimeoutInMinutes: 2
+  pool:
+    vmImage: 'Ubuntu-16.04'
+
+  steps:
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      which conda
+      conda env create -f environment.yml
+      conda env list
+      conda activate MLAKSDeployAML
+      conda env list  
+      echo Login Azure Account
+      az login -t $(sptenent) --service-principal -u $(spidentity) --password $(spsecret)
+#      papermill 01_Data_Prep.ipynb 01_Data_Prep_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: 'Initial Step'
