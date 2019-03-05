@@ -30,6 +30,41 @@ jobs:
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
-      az account show
-    displayName: 'Subscription Test'
+      echo Executing 00_Data_Prep.ipynb
+      papermill 00_Data_Prep.ipynb 00_Data_Prep_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '00_Data_Prep.ipynb'
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLHyperparameterTuning
+      echo Executing 01_Training_Script.ipynb
+      papermill 01_Training_Script.ipynb 01_Training_Script_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '01_Training_Script.ipynb'
  
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLHyperparameterTuning
+      echo Executing 02_Run_Locally.ipynb
+      papermill 02_Run_Locally.ipynb 02_Run_Locally_Output.ipynb --log-output --no-progress-bar -k python3 -p '%env selected_subscription' #(subscriptionid) -p '%env AML_SP_PASSWORD' $(spsecret) -p '%env AML_SP_TENANT_ID' $(sptenent) -p '%env AML_SP_USERNAME' $(spidentity)
+    displayName: '02_Run_Locally.ipynb'
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLHyperparameterTuning
+      echo Executing 03_Hyperparameter_Search.ipynb
+      papermill 03_Hyperparameter_Search.ipynb 03_Hyperparameter_Search_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '03_Hyperparameter_Search.ipynb'
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLHyperparameterTuning
+      echo Executing 04_HyperDrive_Run_Recovery.ipynb
+      papermill 04_HyperDrive_Run_Recovery.ipynb 04_HyperDrive_Run_Recovery_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '04_HyperDrive_Run_Recovery.ipynb'
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLHyperparameterTuning
+      echo Executing 05_Tear_Down.ipynb
+      papermill 05_Tear_Down.ipynb 05_Tear_Down_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '05_Tear_Down.ipynb'
