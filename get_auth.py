@@ -4,7 +4,7 @@ from __future__ import print_function
 import os
 from azureml.core.authentication import (
     AzureCliAuthentication, InteractiveLoginAuthentication,
-    ServicePrincipalAuthentication)
+    ServicePrincipalAuthentication, AuthenticationException)
 
 def get_auth():
     """Get an auth object for use with Workspace objects."""
