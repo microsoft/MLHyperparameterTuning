@@ -19,7 +19,7 @@ jobs:
       which conda
       conda env create -f environment.yml
       conda env list
-      conda activate MLAKSDeployAML
+      conda activate MLHyperparameterTuning
       conda env list  
       echo Login Azure Account
       az login -t $(sptenent) --service-principal -u $(spidentity) --password $(spsecret)
