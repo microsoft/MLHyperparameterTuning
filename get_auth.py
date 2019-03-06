@@ -15,8 +15,8 @@ def get_auth():
         aml_sp_username = os.environ.get("AML_SP_USERNAME")
         auth = ServicePrincipalAuthentication(
             tenant_id=aml_sp_tenant_id,
-            username=aml_sp_username,
-            password=aml_sp_password,
+            service_principal_id=aml_sp_username,
+            service_principal_password=aml_sp_password
         )
     else:
         print("Trying to create Workspace with CLI Authentication")
