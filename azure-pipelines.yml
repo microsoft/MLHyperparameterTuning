@@ -45,7 +45,7 @@ jobs:
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
       echo Executing 02_Run_Locally.ipynb
-      papermill 02_Run_Locally.ipynb 02_Run_Locally_Output.ipynb --log-output --no-progress-bar -k python3 -p "%env selected_subscription" $(subscriptionid) 
+      papermill 02_Run_Locally.ipynb 02_Run_Locally_Output.ipynb --log-output --no-progress-bar -k python3 -p selected_subscription $(subscriptionid) 
     displayName: '02_Run_Locally.ipynb'
 
   - bash: |
