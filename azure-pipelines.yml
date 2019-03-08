@@ -48,14 +48,14 @@ jobs:
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
       echo Executing 02_Run_Locally.ipynb
-      papermill 02_Run_Locally.ipynb 02_Run_Locally_Output.ipynb --log-output --no-progress-bar -k python3 -p selected_subscription $(subscriptionid) 
+      papermill 02_Run_Locally.ipynb 02_Run_Locally_Output.ipynb --log-output --no-progress-bar -k python3 -p selected_subscription $(subscriptionid) -p resource_group $(azurergname) 
     displayName: '02_Run_Locally.ipynb'
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
       echo Executing 03_Hyperparameter_Search.ipynb
-      papermill 03_Hyperparameter_Search.ipynb 03_Hyperparameter_Search_Output.ipynb --log-output --no-progress-bar -k python3 
+      papermill 03_Hyperparameter_Search.ipynb 03_Hyperparameter_Search_Output.ipynb --log-output --no-progress-bar -k python3 -p max_total_runs $(dsmaxruns)
     displayName: '03_Hyperparameter_Search.ipynb'
 
   - bash: |
@@ -71,3 +71,18 @@ jobs:
       echo Executing 05_Tear_Down.ipynb
       papermill 05_Tear_Down.ipynb 05_Tear_Down_Output.ipynb --log-output --no-progress-bar -k python3 
     displayName: '05_Tear_Down.ipynb'
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLHyperparameterTuning
+      echo Execute Resource Group Delete
+      existResponse=$(az group exists -n $(azurergname))
+      if [ "$existResponse" == "true" ]; then
+        echo Deleting project resource group  
+        az group delete --name $(azurergname) --yes
+      else
+        echo Project resource group did not exist
+      fi
+      echo Done Cleanup
+    displayName: 'Backup Cleanup'
+    condition: or(canceled(),failed())
