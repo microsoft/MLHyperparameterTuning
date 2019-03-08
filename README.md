@@ -1,3 +1,4 @@
+![](https://dev.azure.com/customai/MLHyperparameterTuningPipeline/_apis/build/status/Microsoft.MLHyperparameterTuning?branchName=master)
 ### Author: Mario Bourgoin
 
 # Training of Python scikit-learn models on Azure
