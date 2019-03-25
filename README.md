@@ -52,20 +52,15 @@ To set up your environment to run these notebooks, please follow these steps.  T
    ```
    source activate MLHyperparameterTuning
    ```
-6. Install and enable Jupyter widgets:
-   ```
-   jupyter nbextension install --py --user azureml.widgets
-   jupyter nbextension enable --py --user azureml.widgets
-   ```
-7. Login to Azure:
+6. Login to Azure:
    ```
    az login
    ```
-8. If you have more than one Azure subscription, select it:
+7. If you have more than one Azure subscription, select it:
    ```
    az account set --subscription <Your Azure Subscription>
    ```
-9. Start the Jupyter notebook server in the virtual environment:
+8. Start the Jupyter notebook server in the virtual environment:
    ```
    jupyter notebook
    ```
