@@ -40,18 +40,17 @@ To set up your environment to run these notebooks, please follow these steps.  T
    ```
    git clone https://github.com/Microsoft/MLHyperparameterTuning.git
    ```
-3. Create the Python MLHyperparameterTuning virtual environment using the environment.yml:
+3. Enter the local repository:
+   ```
+   cd MLHyperparameterTuning
+   ```
+4. Create the Python MLHyperparameterTuning virtual environment using the environment.yml:
    ```
    conda env create -f environment.yml
    ```
-4. Activate the virtual environment:
+5. Activate the virtual environment:
    ```
    source activate MLHyperparameterTuning
-   ```
-5. Install and enable Jupyter widgets:
-   ```
-   jupyter nbextension install --py --user azureml.widgets
-   jupyter nbextension enable --py --user azureml.widgets
    ```
 6. Login to Azure:
    ```
