@@ -14,7 +14,7 @@ The scenario uses a subset of Stack Overflow question data which includes origin
 
 1. Create an Azure ML Service workspace.
 2. Create an Azure ML Compute cluster.
-3. Upload training and test data to Azure Storage.
+3. Upload training, tuning, and testing data to Azure Storage.
 4. Configure a HyperDrive random parameter search.
 5. Submit the search.
 6. Monitor until complete.
