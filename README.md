@@ -14,7 +14,7 @@ The scenario uses a subset of Stack Overflow question data which includes origin
 
 1. Create an Azure ML Service workspace.
 2. Create an Azure ML Compute cluster.
-3. Upload training and test data to Azure Storage.
+3. Upload training, tuning, and testing data to Azure Storage.
 4. Configure a HyperDrive random parameter search.
 5. Submit the search.
 6. Monitor until complete.
@@ -71,7 +71,7 @@ After following the setup instructions above, run the Jupyter notebooks in order
 
 ## Cleaning up
 
-The [last Jupyter notebook](05_Tear_Down.ipynb) describes how to delete the Azure resources created for running the tutorial. Consult the [conda documentation](https://docs.conda.io) for information on how to remove the conda environment created during the setup.
+The [last Jupyter notebook](07_Tear_Down.ipynb) describes how to delete the Azure resources created for running the tutorial. Consult the [conda documentation](https://docs.conda.io) for information on how to remove the conda environment created during the setup.
 
 ## Contributing
 
