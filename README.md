@@ -74,9 +74,9 @@ To set up your environment to run these notebooks, please follow these steps.  T
    az account set --subscription <Your Azure Subscription>
    ```
 10. Start the Jupyter notebook server:
-   ```
-   jupyter notebook
-   ```
+	```
+	jupyter notebook
+	```
 
 ## Steps
 
