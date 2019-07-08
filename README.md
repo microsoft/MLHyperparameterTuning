@@ -15,7 +15,7 @@ The scenario uses a subset of Stack Overflow question data which includes origin
 1. Create an Azure ML Service workspace.
 2. Create an Azure ML Compute cluster.
 3. Upload training, tuning, and testing data to Azure Storage.
-4. Configure a HyperDrive random parameter search.
+4. Configure a HyperDrive random hyperparameter search.
 5. Submit the search.
 6. Monitor until complete.
 7. Retrieve the best set of hyperparameters.
@@ -23,55 +23,68 @@ The scenario uses a subset of Stack Overflow question data which includes origin
 
 ## Prerequisites
 
-1. Linux(Ubuntu).
+1. Linux (Ubuntu).
 2. [Anaconda Python](https://www.anaconda.com/download) installed.
 3. [Azure account](https://azure.microsoft.com).
 
 The tutorial was developed on an [Azure Ubuntu
 DSVM](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro),
-which addresses the first three prerequisites.
+which addresses the first two prerequisites.  You can allocate such a
+VM on [Azure Portal](https://portal.azure.com) by creating a "Data
+Science Virtual Machine for Linux (Ubuntu)" resource.
 
 ## Setup
 
 To set up your environment to run these notebooks, please follow these steps.  They setup the notebooks to use Azure seamlessly.
 
-1. Create a _Linux_ _Ubuntu_ DSVM.
-2. Clone, fork, or download the zip file for this repository:
+1. Create a _Linux_ _Ubuntu_ VM.
+2. Log in to your VM.  We recommend that you use a graphical client
+   such as
+   [X2Go](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro#x2go)
+   to access your VM.  The remaining steps are to be done on the VM.
+3. Open a terminal emulator.
+4. Clone, fork, or download the zip file for this repository:
    ```
    git clone https://github.com/Microsoft/MLHyperparameterTuning.git
    ```
-3. Enter the local repository:
+5. Enter the local repository:
    ```
    cd MLHyperparameterTuning
    ```
-4. Create the Python MLHyperparameterTuning virtual environment using the environment.yml:
+6. Create the Python MLHyperparameterTuning virtual environment using the environment.yml:
    ```
    conda env create -f environment.yml
    ```
-5. Activate the virtual environment:
+7. Activate the virtual environment:
    ```
    source activate MLHyperparameterTuning
    ```
-6. Login to Azure:
+   The remaining steps should be done in this virtual environment.
+8. Login to Azure:
    ```
    az login
    ```
-7. If you have more than one Azure subscription, select it:
+   You can verify that you are logged in to your subscription by executing
+   the command:
+   ```
+   az account show -o table
+   ```
+9. If you have more than one Azure subscription, select it:
    ```
    az account set --subscription <Your Azure Subscription>
    ```
-8. Start the Jupyter notebook server in the virtual environment:
+10. Start the Jupyter notebook server:
    ```
    jupyter notebook
    ```
 
 ## Steps
 
-After following the setup instructions above, run the Jupyter notebooks in order starting with [Data Prep Notebook](https://github.com/Microsoft/MLHyperparameterTuning/blob/master/00_Data_Prep.ipynb).
+After following the setup instructions above, run the Jupyter notebooks in order starting with [00_Data_Prep_Notebook.ipynb](https://github.com/Microsoft/MLHyperparameterTuning/blob/master/00_Data_Prep.ipynb).
 
 ## Cleaning up
 
-The [last Jupyter notebook](07_Tear_Down.ipynb) describes how to delete the Azure resources created for running the tutorial. Consult the [conda documentation](https://docs.conda.io) for information on how to remove the conda environment created during the setup.
+The [last Jupyter notebook](07_Tear_Down.ipynb) describes how to delete the Azure resources created for running the tutorial. Consult the [conda documentation](https://docs.conda.io) for information on how to remove the conda environment created during the setup.  And if you created a VM, you may also delete it.
 
 ## Contributing
 
