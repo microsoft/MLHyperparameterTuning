@@ -47,30 +47,44 @@ jobs:
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
-      echo Executing 02_Run_Locally.ipynb
-      papermill 02_Run_Locally.ipynb 02_Run_Locally_Output.ipynb --log-output --no-progress-bar -k python3 -p selected_subscription $(subscriptionid) -p resource_group $(azurergname) 
-    displayName: '02_Run_Locally.ipynb'
+      echo Executing 02_Testing_Script.ipynb
+      papermill 02_Testing_Script.ipynb 02_Testing_Script_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '02_Testing_Script.ipynb'
+ 
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLHyperparameterTuning
+      echo Executing 03_Run_Locally.ipynb
+      papermill 03_Run_Locally.ipynb 03_Run_Locally_Output.ipynb --log-output --no-progress-bar -k python3 -p selected_subscription $(subscriptionid) -p resource_group $(azurergname) 
+    displayName: '03_Run_Locally.ipynb'
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
-      echo Executing 03_Hyperparameter_Search.ipynb
-      papermill 03_Hyperparameter_Search.ipynb 03_Hyperparameter_Search_Output.ipynb --log-output --no-progress-bar -k python3 -p max_total_runs $(dsmaxruns)
-    displayName: '03_Hyperparameter_Search.ipynb'
+      echo Executing 04_Hyperparameter_Random_Search.ipynb
+      papermill 04_Hyperparameter_Random_Search.ipynb 04_Hyperparameter_Random_Search_Output.ipynb --log-output --no-progress-bar -k python3 -p max_total_runs $(dsmaxruns)
+    displayName: '04_Hyperparameter_Random_Search.ipynb'
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
-      echo Executing 04_HyperDrive_Run_Recovery.ipynb
-      papermill 04_HyperDrive_Run_Recovery.ipynb 04_HyperDrive_Run_Recovery_Output.ipynb --log-output --no-progress-bar -k python3 
-    displayName: '04_HyperDrive_Run_Recovery.ipynb'
+      echo Executing 05_Train_Best_Model.ipynb
+      papermill 05_Train_Best_Model.ipynb 05_Train_Best_Model_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '05_Train_Best_Model.ipynb'
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
-      echo Executing 05_Tear_Down.ipynb
-      papermill 05_Tear_Down.ipynb 05_Tear_Down_Output.ipynb --log-output --no-progress-bar -k python3 
-    displayName: '05_Tear_Down.ipynb'
+      echo Executing 06_Test_Best_Model.ipynb
+      papermill 06_Test_Best_Model.ipynb 06_Test_Best_Model_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '06_Test_Best_Model.ipynb'
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLHyperparameterTuning
+      echo Executing 07_Tear_Down.ipynb
+      papermill 07_Tear_Down.ipynb 07_Tear_Down_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '07_Tear_Down.ipynb'
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
