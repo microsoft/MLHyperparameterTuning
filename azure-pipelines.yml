@@ -26,6 +26,9 @@ jobs:
       conda env list  
       echo Login Azure Account
       az login -t $(sptenent) --service-principal -u $(spidentity) --password $(spsecret)
+      echo Try and figure out what account set takes
+      az account set -h
+      echo Try and set it.
       az account set --subscription $(subscriptionid)
 #      papermill 01_Data_Prep.ipynb 01_Data_Prep_Output.ipynb --log-output --no-progress-bar -k python3 
     displayName: 'Configuration'
