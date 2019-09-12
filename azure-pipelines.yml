@@ -85,9 +85,16 @@ jobs:
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
-      echo Executing 07_Tear_Down.ipynb
-      papermill 07_Tear_Down.ipynb 07_Tear_Down_Output.ipynb --log-output --no-progress-bar -k python3 
-    displayName: '07_Tear_Down.ipynb'
+      echo Executing 07_Train_With_AML_Pipeline.ipynb
+      papermill 07_Train_With_AML_Pipeline.ipynb 07_Train_With_AML_Pipeline_Output.ipynb --log-output --no-progress-bar -k python3 -p max_total_runs $(dsmaxruns) -p estimators 10
+    displayName: '07_Train_With_AML_Pipeline.ipynb'
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLHyperparameterTuning
+      echo Executing 08_Tear_Down.ipynb
+      papermill 08_Tear_Down.ipynb 08_Tear_Down_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '08_Tear_Down.ipynb'
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
