@@ -11,5 +11,5 @@ dependencies:
   - lightgbm==2.2.1
   - pip:
     - prompt_toolkit==2.0.9
-    - azure-cli==2.0.74
-    - azureml-sdk[notebooks]==1.0.65
+    - azure-cli==2.0.68
+    - azureml-sdk[notebooks]==1.0.48
