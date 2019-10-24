@@ -86,7 +86,7 @@ jobs:
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
       echo Executing 07_Train_With_AML_Pipeline.ipynb
-      papermill 07_Train_With_AML_Pipeline.ipynb 07_Train_With_AML_Pipeline_Output.ipynb --log-output --no-progress-bar -k python3
+      papermill 07_Train_With_AML_Pipeline.ipynb 07_Train_With_AML_Pipeline_Output.ipynb --log-output --no-progress-bar -k python3 -p max_total_runs $(dsmaxruns)
     displayName: '07_Train_With_AML_Pipeline.ipynb'
 
   - bash: |
