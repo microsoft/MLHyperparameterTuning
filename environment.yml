@@ -4,12 +4,12 @@ channels:
 dependencies:
   - python=3.6
   - pip==19.2.3
-  - nb_conda_kernels==2.2.1
-  - papermill==1.0.1
+  - nb_conda_kernels==2.2.2
+  - papermill==1.2.0
   - pandas==0.23.4
-  - scikit-learn==0.20.0
+  - scikit-learn==0.21.3
   - lightgbm==2.2.1
   - pip:
     - prompt_toolkit==2.0.9
-    - azure-cli==2.0.69
-    - azureml-sdk[notebooks]==1.0.48
+    - azure-cli==2.0.75
+    - azureml-sdk[notebooks]==1.0.69
