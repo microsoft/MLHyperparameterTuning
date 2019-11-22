@@ -10,6 +10,7 @@ dependencies:
   - scikit-learn==0.21.3
   - lightgbm==2.2.1
   - pip:
+    - papermill==1.1.0
     - prompt_toolkit==2.0.9
     - azure-cli==2.0.75
     - azureml-sdk[notebooks]==1.0.69
