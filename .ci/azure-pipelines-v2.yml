@@ -16,7 +16,7 @@ variables:
   TestPostfix: ""
   DeploymentName: MLScoreDeployJob
   ProjectLocation: ""
-  PythonPath: $(ProjectLocation)
+  PythonPath: "."
   Agent: "Hosted Ubuntu 1604"
 
 # In additional to the above variables, the "template" parameter of the last step must also be hard coded for each workload
