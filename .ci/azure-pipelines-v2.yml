@@ -8,7 +8,7 @@ resources:
 
 variables:
   CloudPlatform: AzureCloud
-  TridentWorkloadType: ai-ml--score-int
+  TridentWorkloadType: ai-ml-score-int
   TridentWorkloadTypeShort: aimlscore
   DeployLocation: eastus
   azureSubscription: AG-AzureCAT-AIDevOps-Test-COGSNonProd-IO1685734(0ca618d2-22a8-413a-96d0-0f1b531129c3)
