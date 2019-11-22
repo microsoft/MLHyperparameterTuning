@@ -15,7 +15,7 @@ variables:
   azure_subscription: 0ca618d2-22a8-413a-96d0-0f1b531129c3
   TestPostfix: ""
   DeploymentName: MLScoreDeployJob
-  ProjectLocation: ""
+  ProjectLocation: "."
   PythonPath: "."
   Agent: "Hosted Ubuntu 1604"
 
