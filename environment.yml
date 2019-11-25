@@ -13,4 +13,3 @@ dependencies:
     - prompt_toolkit==2.0.9
     - azure-cli==2.0.75
     - azureml-sdk[notebooks]==1.0.69
-    - git+https://github.com/Microsoft/StatisticsTracker
