@@ -14,10 +14,6 @@ resources:
       name: microsoft/AI
       endpoint: AIArchitecturesAndPractices-GitHub
 
-variables:
-- template: .ci/vars/agce_devops_sub_vars.yml@aitemplates
-- template: .ci/vars/mlhyperparametertuning_vars.yml@aitemplates
-
 # In additional to the above variables, the "template" parameter of the last step must also be hard coded for each workload
 
 trigger:
@@ -27,14 +23,8 @@ trigger:
     - mabou/instrument
 
 stages:
-- template: .ci/stages/deploy_notebooks_stages.yml@aitemplates
+- template: .ci/stages/deploy_notebooks_stages_v2.yml@aitemplates
   parameters:
-    jobDisplayName: $(DeploymentName)
-    TridentWorkloadTypeShort: $(TridentWorkloadTypeShort)
-    DeployLocation: $(DeployLocation)
+    jobDisplayName: MLScoreDeployJob
     DefaultWorkingDirectory: $(System.DefaultWorkingDirectory)
-    Template: ${{variables.Template}}
-    azureSubscription: $(azureSubscription)
-    azure_subscription: $(azure_subscription)
-    ProjectLocation: $(ProjectLocation)
-    PythonPath: $(PythonPath)
+    workload_vars: ../vars/mlhyperparametertuning_vars.yml
