@@ -29,6 +29,7 @@ trigger:
 
 stages:
 - stage: stable
+  dependsOn: []
   jobs:
   - job: build_deploy_ai
     displayName: 'Build deploy AI'
@@ -73,6 +74,7 @@ stages:
         python_secret_root: "./"
 
 - stage: flight_release
+  dependsOn: []
   jobs:
   - job: build_deploy_ai
     displayName: 'Build deploy AI'
@@ -119,6 +121,7 @@ stages:
         flighting_release: true
 
 - stage: flight_preview
+  dependsOn: []
   jobs:
   - job: build_deploy_ai
     displayName: 'Build deploy AI'
