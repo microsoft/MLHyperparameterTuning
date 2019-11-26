@@ -53,7 +53,7 @@ stages:
     - template: .ci/steps/deploy_notebook_steps.yml@aitemplates
       parameters:
         deployment_name: $(DeploymentName)
-        template: MLBatchDeployAMLJob.yml
+        template: MLTrainDeployAMLJob.yml
         azureSubscription: $(azureSubscription)
         azure_subscription: $(azure_subscription)
         azureresourcegroup: $(AIResourceGroupName)
@@ -98,7 +98,7 @@ stages:
     - template: .ci/steps/deploy_notebook_steps.yml@aitemplates
       parameters:
         deployment_name: $(DeploymentName)
-        template: MLBatchDeployAMLJob.yml
+        template: MLTrainDeployAMLJob.yml
         azureSubscription: $(azureSubscription)
         azure_subscription: $(azure_subscription)
         azureresourcegroup: $(AIResourceGroupName)
@@ -144,7 +144,7 @@ stages:
     - template: .ci/steps/deploy_notebook_steps.yml@aitemplates
       parameters:
         deployment_name: $(DeploymentName)
-        template: MLBatchDeployAMLJob.yml
+        template: MLTrainDeployAMLJob.yml
         azureSubscription: $(azureSubscription)
         azure_subscription: $(azure_subscription)
         azureresourcegroup: $(AIResourceGroupName)
