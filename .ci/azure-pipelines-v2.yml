@@ -35,3 +35,4 @@ stages:
     Template: ${{variables.Template}}
     ProjectLocation: $(ProjectLocation)
     PythonPath: $(PythonPath)
+    workload_vars: ../vars/mlhyperparametertuning_vars.yml
