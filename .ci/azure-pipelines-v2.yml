@@ -26,46 +26,14 @@ trigger:
     - mabou/instrument
 
 stages:
-- template: .ci/stages/deploy_notebooks_stage.yml@aitemplates
+- template: .ci/stages/deploy_notebooks_stages.yml@aitemplates
   parameters:
-    stageName: 'stable'
     jobDisplayName: $(DeploymentName)
     TridentWorkloadTypeShort: $(TridentWorkloadTypeShort)
     DeployLocation: $(DeployLocation)
-    TestPostfix: "-stable"
     DefaultWorkingDirectory: $(System.DefaultWorkingDirectory)
     Template: MLTrainDeployAMLJob.yml
     azureSubscription: $(azureSubscription)
     azure_subscription: $(azure_subscription)
     ProjectLocation: $(ProjectLocation)
     PythonPath: $(PythonPath)
-
-- template: .ci/stages/deploy_notebooks_stage.yml@aitemplates
-  parameters:
-    stageName: 'release'
-    jobDisplayName: $(DeploymentName)
-    TridentWorkloadTypeShort: $(TridentWorkloadTypeShort)
-    DeployLocation: $(DeployLocation)
-    TestPostfix: "-release"
-    DefaultWorkingDirectory: $(System.DefaultWorkingDirectory)
-    Template: MLTrainDeployAMLJob.yml
-    azureSubscription: $(azureSubscription)
-    azure_subscription: $(azure_subscription)
-    ProjectLocation: $(ProjectLocation)
-    PythonPath: $(PythonPath)
-    flighting_release: true
-
-- template: .ci/stages/deploy_notebooks_stage.yml@aitemplates
-  parameters:
-    stageName: 'preview'
-    jobDisplayName: $(DeploymentName)
-    TridentWorkloadTypeShort: $(TridentWorkloadTypeShort)
-    DeployLocation: $(DeployLocation)
-    TestPostfix: "-preview"
-    DefaultWorkingDirectory: $(System.DefaultWorkingDirectory)
-    Template: MLTrainDeployAMLJob.yml
-    azureSubscription: $(azureSubscription)
-    azure_subscription: $(azure_subscription)
-    ProjectLocation: $(ProjectLocation)
-    PythonPath: $(PythonPath)
-    flighting_preview: true
