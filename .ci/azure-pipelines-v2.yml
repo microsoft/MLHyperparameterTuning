@@ -1,4 +1,12 @@
 # MLHyperparameterTuning  Pipeline
+#
+# The following variables must be set within the DevOps portal.
+#
+# azureSubscription: (str) - Name of the ADO Service Connection. EX: NAME_OF_SUB(XXX-XXX-XXX)
+# azure_subscription (guid) - The subscription ID. EX XXXX-XXXX-XXXX
+# 
+# A Github Service Connection must also be created with the name "AIArchitecturesAndPractices-GitHub"
+
 resources:
   repositories:
     - repository: aitemplates
@@ -7,17 +15,8 @@ resources:
       endpoint: AIArchitecturesAndPractices-GitHub
 
 variables:
-  CloudPlatform: AzureCloud
-  TridentWorkloadType: ai-ml-score-int
-  TridentWorkloadTypeShort: aimlscore
-  DeployLocation: eastus
-  azureSubscription: AG-AzureCAT-AIDevOps-Test-COGSNonProd-IO1685734(0ca618d2-22a8-413a-96d0-0f1b531129c3)
-  azure_subscription: 0ca618d2-22a8-413a-96d0-0f1b531129c3
-  TestPostfix: ""
-  DeploymentName: MLScoreDeployJob
-  ProjectLocation: "."
-  PythonPath: "."
-  Agent: "Hosted Ubuntu 1604"
+- template: .ci/vars/agce_devops_sub_vars.yml@aitemplates
+- template: .ci/vars/mlhyperparametertuning_vars.yml@aitemplates
 
 # In additional to the above variables, the "template" parameter of the last step must also be hard coded for each workload
 
@@ -28,141 +27,14 @@ trigger:
     - mabou/instrument
 
 stages:
-- stage: stable
-  dependsOn: []
-  jobs:
-  - job: build_deploy_ai
-    displayName: 'Build deploy AI'
-
-    timeoutInMinutes: 180
-
-    workspace:
-      clean: all
-
-    variables:
-      DeploymentGuidTag: $[ dependencies.build_relayer_sources.outputs['GenDeployGuidTag.DeploymentGuid'] ]
-      DeploymentTimeStamp: $[ dependencies.build_relayer_sources.outputs['GenDeployTimeStamp.timeStamp'] ]
-      EnvironmentPrefix: $(TridentWorkloadType)-$(CloudPlatform)-$(DeployLocation)$(TestPostfix)
-      ResourcePrefix: $(TridentWorkloadTypeShort)-$(DeployLocation)$(TestPostfix)
-      EnvironmentContext: $(EnvironmentPrefix)-$(DeploymentGuidTag)
-      AIResourceGroupName: $(TridentWorkloadTypeShort)-$(DeployLocation)$(TestPostfix)
-
-    steps:
-
-    - template: .ci/steps/docker_clean.yml@aitemplates
-
-    - template: .ci/steps/deploy_notebook_steps.yml@aitemplates
-      parameters:
-        deployment_name: $(DeploymentName)
-        template: MLTrainDeployAMLJob.yml
-        azureSubscription: $(azureSubscription)
-        azure_subscription: $(azure_subscription)
-        azureresourcegroup: $(AIResourceGroupName)
-        workspacename: $(TridentWorkloadTypeShort)-$(DeployLocation)
-        azureregion: $(DeployLocation)
-        aksimagename: myimage
-        environment: $(EnvironmentContext)
-        doCleanup: False
-        alias: $(Build.QueuedBy)
-        project: $(TridentWorkloadTypeShort)
-        agent: $(Agent)
-        ENVIRONMENT_PREFIX: $(EnvironmentPrefix)
-        deploymentguidtag: $(DeploymentGuidTag)
-        aks_name: $(TridentWorkloadTypeShort)$(Deploy_Location_Short)
-        python_path: $(System.DefaultWorkingDirectory)$(PythonPath)
-        location: $(ProjectLocation)
-        python_secret_root: "./"
-
-- stage: flight_release
-  dependsOn: []
-  jobs:
-  - job: build_deploy_ai
-    displayName: 'Build deploy AI'
-
-    timeoutInMinutes: 180
-
-    workspace:
-      clean: all
-
-    variables:
-      DeploymentGuidTag: $[ dependencies.build_relayer_sources.outputs['GenDeployGuidTag.DeploymentGuid'] ]
-      DeploymentTimeStamp: $[ dependencies.build_relayer_sources.outputs['GenDeployTimeStamp.timeStamp'] ]
-      TestPostfix: "-release"
-      EnvironmentPrefix: $(TridentWorkloadType)-$(CloudPlatform)-$(DeployLocation)$(TestPostfix)
-      ResourcePrefix: $(TridentWorkloadTypeShort)-$(DeployLocation)$(TestPostfix)
-      EnvironmentContext: $(EnvironmentPrefix)-$(DeploymentGuidTag)
-      AIResourceGroupName: $(TridentWorkloadTypeShort)-$(DeployLocation)$(TestPostfix)
-
-    steps:
-
-    - template: .ci/steps/docker_clean.yml@aitemplates
-
-    - template: .ci/steps/deploy_notebook_steps.yml@aitemplates
-      parameters:
-        deployment_name: $(DeploymentName)
-        template: MLTrainDeployAMLJob.yml
-        azureSubscription: $(azureSubscription)
-        azure_subscription: $(azure_subscription)
-        azureresourcegroup: $(AIResourceGroupName)
-        workspacename: $(TridentWorkloadTypeShort)-$(DeployLocation)
-        azureregion: $(DeployLocation)
-        aksimagename: myimage
-        environment: $(EnvironmentContext)
-        doCleanup: False
-        alias: $(Build.QueuedBy)
-        project: $(TridentWorkloadTypeShort)
-        agent: $(Agent)
-        ENVIRONMENT_PREFIX: $(EnvironmentPrefix)
-        deploymentguidtag: $(DeploymentGuidTag)
-        aks_name: $(TridentWorkloadTypeShort)$(Deploy_Location_Short)
-        python_path: $(System.DefaultWorkingDirectory)$(PythonPath)
-        location: $(ProjectLocation)
-        python_secret_root: "./"
-        flighting_release: true
-
-- stage: flight_preview
-  dependsOn: []
-  jobs:
-  - job: build_deploy_ai
-    displayName: 'Build deploy AI'
-
-    timeoutInMinutes: 180
-
-    workspace:
-      clean: all
-
-    variables:
-      DeploymentGuidTag: $[ dependencies.build_relayer_sources.outputs['GenDeployGuidTag.DeploymentGuid'] ]
-      DeploymentTimeStamp: $[ dependencies.build_relayer_sources.outputs['GenDeployTimeStamp.timeStamp'] ]
-      TestPostfix: "-preview"
-      EnvironmentPrefix: $(TridentWorkloadType)-$(CloudPlatform)-$(DeployLocation)$(TestPostfix)
-      ResourcePrefix: $(TridentWorkloadTypeShort)-$(DeployLocation)$(TestPostfix)
-      EnvironmentContext: $(EnvironmentPrefix)-$(DeploymentGuidTag)
-      AIResourceGroupName: $(TridentWorkloadTypeShort)-$(DeployLocation)$(TestPostfix)
-
-    steps:
-
-    - template: .ci/steps/docker_clean.yml@aitemplates
-
-    - template: .ci/steps/deploy_notebook_steps.yml@aitemplates
-      parameters:
-        deployment_name: $(DeploymentName)
-        template: MLTrainDeployAMLJob.yml
-        azureSubscription: $(azureSubscription)
-        azure_subscription: $(azure_subscription)
-        azureresourcegroup: $(AIResourceGroupName)
-        workspacename: $(TridentWorkloadTypeShort)-$(DeployLocation)
-        azureregion: $(DeployLocation)
-        aksimagename: myimage
-        environment: $(EnvironmentContext)
-        doCleanup: False
-        alias: $(Build.QueuedBy)
-        project: $(TridentWorkloadTypeShort)
-        agent: $(Agent)
-        ENVIRONMENT_PREFIX: $(EnvironmentPrefix)
-        deploymentguidtag: $(DeploymentGuidTag)
-        aks_name: $(TridentWorkloadTypeShort)$(Deploy_Location_Short)
-        python_path: $(System.DefaultWorkingDirectory)$(PythonPath)
-        location: $(ProjectLocation)
-        python_secret_root: "./"
-        flighting_preview: true
+- template: .ci/stages/deploy_notebooks_stages.yml@aitemplates
+  parameters:
+    jobDisplayName: $(DeploymentName)
+    TridentWorkloadTypeShort: $(TridentWorkloadTypeShort)
+    DeployLocation: $(DeployLocation)
+    DefaultWorkingDirectory: $(System.DefaultWorkingDirectory)
+    Template: ${{variables.Template}}
+    azureSubscription: $(azureSubscription)
+    azure_subscription: $(azure_subscription)
+    ProjectLocation: $(ProjectLocation)
+    PythonPath: $(PythonPath)
