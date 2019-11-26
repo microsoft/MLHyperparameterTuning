@@ -15,12 +15,7 @@ resources:
       endpoint: AIArchitecturesAndPractices-GitHub
 
 variables:
-  DeploymentName: MLScoreDeployJob
-  TridentWorkloadTypeShort: aimlscore
-  DeployLocation: eastus  
-  ProjectLocation: "."
-  PythonPath: "."
-  Template: MLTrainDeployAMLJob.yml
+- template: ../vars/mlhyperparametertuning_vars.yml
 
 # In additional to the above variables, the "template" parameter of the last step must also be hard coded for each workload
 
