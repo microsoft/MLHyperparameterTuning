@@ -15,7 +15,8 @@ resources:
       endpoint: AIArchitecturesAndPractices-GitHub
 
 variables:
-- template: ./vars/mlhyperparametertuning_vars.yml
+- template: .ci/vars/agce_devops_sub_vars.yml@aitemplates
+- template: .ci/vars/mlhyperparametertuning_vars.yml@aitemplates
 
 # In additional to the above variables, the "template" parameter of the last step must also be hard coded for each workload
 
