@@ -4,14 +4,15 @@
 #
 # azureSubscription: (str) - Name of the ADO Service Connection. EX: NAME_OF_SUB(XXX-XXX-XXX)
 # azure_subscription (guid) - The subscription ID. EX XXXX-XXXX-XXXX
-# Github_Repo_Service_Connection (str) - Name of the ADO Service Connection to reach Github.
+# 
+# A Github Service Connection must also be created with the name "AIArchitecturesAndPractices-GitHub"
 
 resources:
   repositories:
     - repository: aitemplates
       type: github
       name: microsoft/AI
-      endpoint: $(Github_Repo_Service_Connection)
+      endpoint: AIArchitecturesAndPractices-GitHub
 
 variables:
   TridentWorkloadType: ai-ml-score-int
