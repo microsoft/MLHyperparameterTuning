@@ -15,12 +15,12 @@ resources:
       endpoint: AIArchitecturesAndPractices-GitHub
 
 variables:
-  TridentWorkloadType: ai-ml-score-int
-  TridentWorkloadTypeShort: aimlscore
-  DeployLocation: eastus
   DeploymentName: MLScoreDeployJob
+  TridentWorkloadTypeShort: aimlscore
+  DeployLocation: eastus  
   ProjectLocation: "."
   PythonPath: "."
+  Template: "MLTrainDeployAMLJob.yml"
 
 # In additional to the above variables, the "template" parameter of the last step must also be hard coded for each workload
 
@@ -37,7 +37,7 @@ stages:
     TridentWorkloadTypeShort: $(TridentWorkloadTypeShort)
     DeployLocation: $(DeployLocation)
     DefaultWorkingDirectory: $(System.DefaultWorkingDirectory)
-    Template: MLTrainDeployAMLJob.yml
+    Template: $(Template)
     azureSubscription: $(azureSubscription)
     azure_subscription: $(azure_subscription)
     ProjectLocation: $(ProjectLocation)
