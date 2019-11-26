@@ -48,11 +48,6 @@ jobs:
 
   - template: .ci/steps/docker_clean.yml@aitemplates
 
-  - bash: |
-      Deploy_Location_Short=$(echo $DeployLocation | cut -c1-12)
-      echo "##vso[task.setvariable variable=Deploy_Location_Short]$Deploy_Location_Short"
-    displayName: "Create short name for AKS"
-
   - template: .ci/steps/deploy_notebook_steps.yml@aitemplates
     parameters:
       deployment_name: $(DeploymentName)
