@@ -1,18 +1,22 @@
 # MLHyperparameterTuning  Pipeline
+#
+# The following variables must be set within the DevOps portal.
+#
+# azureSubscription: (str) - Name of the ADO Service Connection. EX: NAME_OF_SUB(XXX-XXX-XXX)
+# azure_subscription (guid) - The subscription ID. EX XXXX-XXXX-XXXX
+# Github_Repo_Service_Connection (str) - Name of the ADO Service Connection to reach Github.
+
 resources:
   repositories:
     - repository: aitemplates
       type: github
       name: microsoft/AI
-      endpoint: AIArchitecturesAndPractices-GitHub
+      endpoint: $(Github_Repo_Service_Connection)
 
 variables:
-  CloudPlatform: AzureCloud
   TridentWorkloadType: ai-ml-score-int
   TridentWorkloadTypeShort: aimlscore
   DeployLocation: eastus
-  azureSubscription: AG-AzureCAT-AIDevOps-Test-COGSNonProd-IO1685734(0ca618d2-22a8-413a-96d0-0f1b531129c3)
-  azure_subscription: 0ca618d2-22a8-413a-96d0-0f1b531129c3
   DeploymentName: MLScoreDeployJob
   ProjectLocation: "."
   PythonPath: "."
