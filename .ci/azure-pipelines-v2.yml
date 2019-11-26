@@ -28,7 +28,7 @@ trigger:
     - mabou/instrument
 
 stages:
-  - stage: stable
+- stage: stable
   jobs:
   - job: build_deploy_ai
     displayName: 'Build deploy AI'
@@ -72,7 +72,7 @@ stages:
         location: $(ProjectLocation)
         python_secret_root: "./"
 
-  stage: flight_release
+- stage: flight_release
   jobs:
   - job: build_deploy_ai
     displayName: 'Build deploy AI'
@@ -118,8 +118,7 @@ stages:
         python_secret_root: "./"
         flighting_release: true
 
-
-  stage: flight_preview
+- stage: flight_preview
   jobs:
   - job: build_deploy_ai
     displayName: 'Build deploy AI'
