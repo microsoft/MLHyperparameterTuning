@@ -20,6 +20,7 @@ variables:
   DeployLocation: eastus  
   ProjectLocation: "."
   PythonPath: "."
+  Template: MLTrainDeployAMLJob.yml
 
 # In additional to the above variables, the "template" parameter of the last step must also be hard coded for each workload
 
@@ -36,7 +37,7 @@ stages:
     TridentWorkloadTypeShort: $(TridentWorkloadTypeShort)
     DeployLocation: $(DeployLocation)
     DefaultWorkingDirectory: $(System.DefaultWorkingDirectory)
-    Template: MLTrainDeployAMLJob.yml
+    Template: ${{variables.Template}}
     azureSubscription: $(azureSubscription)
     azure_subscription: $(azure_subscription)
     ProjectLocation: $(ProjectLocation)
