@@ -25,7 +25,7 @@ trigger:
   batch: true
   branches:
     include:
-    - master
+    - mabou/instrument
 
 stages:
   - stage: stable
