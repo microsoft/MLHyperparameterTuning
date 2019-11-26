@@ -1,10 +1,5 @@
 # MLHyperparameterTuning  Pipeline
 #
-# The following variables must be set within the DevOps portal.
-#
-# azureSubscription: (str) - Name of the ADO Service Connection. EX: NAME_OF_SUB(XXX-XXX-XXX)
-# azure_subscription (guid) - The subscription ID. EX XXXX-XXXX-XXXX
-# 
 # A Github Service Connection must also be created with the name "AIArchitecturesAndPractices-GitHub"
 
 resources:
@@ -13,8 +8,6 @@ resources:
       type: github
       name: microsoft/AI
       endpoint: AIArchitecturesAndPractices-GitHub
-
-# In additional to the above variables, the "template" parameter of the last step must also be hard coded for each workload
 
 trigger:
   batch: true
