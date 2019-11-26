@@ -12,7 +12,7 @@ resources:
     - repository: aitemplates
       type: github
       name: microsoft/AI
-      endpoint: AIArchitecturesAndPractices-GitHub
+      endpoint: ${{variables.Github_Repo_Service_Connection}}
 
 variables:
 - template: ./vars/mlhyperparametertuning_vars.yml
