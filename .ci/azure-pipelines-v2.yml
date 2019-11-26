@@ -28,11 +28,6 @@ trigger:
 stages:
 - template: .ci/stages/deploy_notebooks_stages_v2.yml@aitemplates
   parameters:
-    jobDisplayName: $(DeploymentName)
-    TridentWorkloadTypeShort: $(TridentWorkloadTypeShort)
-    DeployLocation: $(DeployLocation)
+    jobDisplayName: MLScoreDeployJob
     DefaultWorkingDirectory: $(System.DefaultWorkingDirectory)
-    Template: ${{variables.Template}}
-    ProjectLocation: $(ProjectLocation)
-    PythonPath: $(PythonPath)
     workload_vars: ../vars/mlhyperparametertuning_vars.yml
