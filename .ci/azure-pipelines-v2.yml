@@ -14,9 +14,6 @@ resources:
       name: microsoft/AI
       endpoint: AIArchitecturesAndPractices-GitHub
 
-variables:
-- template: .ci/vars/mlhyperparametertuning_vars.yml@aitemplates
-
 # In additional to the above variables, the "template" parameter of the last step must also be hard coded for each workload
 
 trigger:
