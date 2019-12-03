@@ -9,7 +9,7 @@ resources:
       name: microsoft/AI
       endpoint: AIArchitecturesAndPractices-GitHub
 
- trigger:
+trigger:
   branches:
     include:
     - mabou/instrument
