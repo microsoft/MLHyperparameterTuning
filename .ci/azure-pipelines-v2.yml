@@ -18,7 +18,6 @@ variables:
 # In additional to the above variables, the "template" parameter of the last step must also be hard coded for each workload
 
 trigger:
-  batch: true
   branches:
     include:
     - mabou/instrument
