@@ -1,10 +1,6 @@
-# MLHyperparameterTuning  Pipeline
-resources:
-  repositories:
-    - repository: aitemplates
-      type: github
-      name: microsoft/AI
-      endpoint: AIArchitecturesAndPractices-GitHub
+# MLHyperparameterTuning Pipeline 
+
+trigger: none
 
 variables:
   CloudPlatform: AzureCloud
