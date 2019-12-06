@@ -1,13 +1,22 @@
 # MLHyperparameterTuning Pipeline 
 
-trigger:
-  batch: true
-  branches:
-    include:
-    - master
+trigger: none
 
 variables:
-- group: AzureKeyVault
+  BuildConfiguration: Release
+  BuildBinariesDirectory: $(Build.BinariesDirectory)
+  BuildPlatform: any cpu
+  DotNetCoreBuildVersion: 2.2.108
+  DotNetRuntimeTarget: ubuntu.18.04-x64
+  AgentToolsDirectory: $(Agent.ToolsDirectory)
+  CloudPlatform: AzureCloud
+  ProductName: Trident
+  TridentWorkloadType: $(WorkloadType)
+  TridentWorkloadTypeShort: $(WorkloadTypeShort)
+  DeployLocation: eastus
+  Agent: agce-ai
+  azureSubscription: AG-AzureCAT-AIDevOps-Test-COGSNonProd-IO1685734(0ca618d2-22a8-413a-96d0-0f1b531129c3)
+  azure_subscription: 0ca618d2-22a8-413a-96d0-0f1b531129c3
 
 jobs:
 - job: MLHyperparameterTuningJob
@@ -58,7 +67,7 @@ jobs:
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
       echo Executing 03_Run_Locally.ipynb
-      papermill 03_Run_Locally.ipynb 03_Run_Locally_Output.ipynb --log-output --no-progress-bar -k python3 -p subscription_id $(subscriptionid) -p resource_group $(azurergname) 
+      papermill 03_Run_Locally.ipynb 03_Run_Locally_Output.ipynb --log-output --no-progress-bar -k python3 -p selected_subscription $(subscriptionid) -p resource_group $(azurergname) 
     displayName: '03_Run_Locally.ipynb'
 
   - bash: |
