@@ -8,6 +8,7 @@ trigger:
 
 variables:
 - group: AzureKeyVault
+  estimators: 1
 
 jobs:
 - job: MLHyperparameterTuningJob
@@ -44,7 +45,7 @@ jobs:
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
       echo Executing 01_Training_Script.ipynb
-      papermill 01_Training_Script.ipynb 01_Training_Script_Output.ipynb --log-output --no-progress-bar -k python3 
+      papermill 01_Training_Script.ipynb 01_Training_Script_Output.ipynb --log-output --no-progress-bar -k python3 -p estimators $(estimators)
     displayName: '01_Training_Script.ipynb'
  
   - bash: |
@@ -58,21 +59,21 @@ jobs:
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
       echo Executing 03_Run_Locally.ipynb
-      papermill 03_Run_Locally.ipynb 03_Run_Locally_Output.ipynb --log-output --no-progress-bar -k python3 -p subscription_id $(subscriptionid) -p resource_group $(azurergname) 
+      papermill 03_Run_Locally.ipynb 03_Run_Locally_Output.ipynb --log-output --no-progress-bar -k python3 -p subscription_id $(subscriptionid) -p resource_group $(azurergname) -p estimators $(estimators)
     displayName: '03_Run_Locally.ipynb'
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
       echo Executing 04_Hyperparameter_Random_Search.ipynb
-      papermill 04_Hyperparameter_Random_Search.ipynb 04_Hyperparameter_Random_Search_Output.ipynb --log-output --no-progress-bar -k python3 -p max_total_runs $(dsmaxruns)
+      papermill 04_Hyperparameter_Random_Search.ipynb 04_Hyperparameter_Random_Search_Output.ipynb --log-output --no-progress-bar -k python3 -p max_total_runs $(dsmaxruns) -p estimators $(estimators)
     displayName: '04_Hyperparameter_Random_Search.ipynb'
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
       echo Executing 05_Train_Best_Model.ipynb
-      papermill 05_Train_Best_Model.ipynb 05_Train_Best_Model_Output.ipynb --log-output --no-progress-bar -k python3 
+      papermill 05_Train_Best_Model.ipynb 05_Train_Best_Model_Output.ipynb --log-output --no-progress-bar -k python3 -p estimators $(estimators)
     displayName: '05_Train_Best_Model.ipynb'
 
   - bash: |
