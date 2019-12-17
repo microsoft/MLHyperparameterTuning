@@ -23,6 +23,7 @@ pr:
 stages:
 - template: .ci/stages/deploy_notebooks_stages_v2.yml@aitemplates
   parameters:
+    Agent: $(Agent_Name)
     jobDisplayName: MLScoreDeployJob
     DefaultWorkingDirectory: $(System.DefaultWorkingDirectory)
     workload_vars: ../vars/mlhyperparametertuning_vars.yml
