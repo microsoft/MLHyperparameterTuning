@@ -12,12 +12,14 @@ resources:
 trigger:
   branches:
     include:
+    - master
     - mabou/instrument
 
 pr:
   autoCancel: true
   branches:
     include:
+    - master
     - mabou/instrument
 
 stages:
