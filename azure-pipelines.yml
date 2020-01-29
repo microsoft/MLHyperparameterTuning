@@ -20,7 +20,7 @@ jobs:
 
   strategy:
     maxParallel: 3
-    matrix: {"eastus": {"azlocation": "eastus", "azurergname" : "mlhyptuneeastus"},"southcentralus": {"azlocation": "southcentralus", "azureresourcegroup" : "mlhyptunesouthctrl" },"westus2": {"azlocation": "westus2", "azureresourcegroup" : "mlhyptunewestus"}}
+    matrix: {"eastus": {"azlocation": "eastus", "azurergname" : "mlhyptuneeastus"},"southcentralus": {"azlocation": "southcentralus", "azurergname" : "mlhyptunesouthctrl" },"westus2": {"azlocation": "westus2", "azurergname" : "mlhyptunewestus"}}
 
   steps:
   - bash: |
