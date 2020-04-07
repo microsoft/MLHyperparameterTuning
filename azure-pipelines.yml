@@ -14,8 +14,13 @@ jobs:
 - job: MLHyperparameterTuningJob
   timeoutInMinutes: 300
   cancelTimeoutInMinutes: 2
+  
   pool:
     vmImage: 'Ubuntu-16.04'
+
+  strategy:
+    maxParallel: 3
+    matrix: {"eastus": {"azlocation": "eastus", "azurergname" : "mlhyptuneeastus"},"southcentralus": {"azlocation": "southcentralus", "azurergname" : "mlhyptunesouthctrl" },"westus2": {"azlocation": "westus2", "azurergname" : "mlhyptunewestus"}}
 
   steps:
   - bash: |
@@ -59,7 +64,7 @@ jobs:
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLHyperparameterTuning
       echo Executing 03_Run_Locally.ipynb
-      papermill 03_Run_Locally.ipynb 03_Run_Locally_Output.ipynb --log-output --no-progress-bar -k python3 -p subscription_id $(subscriptionid) -p resource_group $(azurergname) -p estimators 1
+      papermill 03_Run_Locally.ipynb 03_Run_Locally_Output.ipynb --log-output --no-progress-bar -k python3 -p subscription_id $(subscriptionid) -p resource_group $(azurergname) -p location $(azlocation) -p estimators 1 
     displayName: '03_Run_Locally.ipynb'
 
   - bash: |
