@@ -12,4 +12,5 @@ dependencies:
   - pip:
     - prompt_toolkit==2.0.9
     - azure-cli==2.0.77
+    - azure-core
     - azureml-sdk[notebooks]==1.0.76
